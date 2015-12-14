@@ -1,0 +1,10 @@
+# Visual Studio
+*.suo
+bin
+obj
+*.cachefile
+*.csproj.user
+
+# System
+.DS_Store
+thumbs.db
