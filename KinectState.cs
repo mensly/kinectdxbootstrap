@@ -95,6 +95,7 @@ namespace KinectDXBootstrap
         public bool IsAvailable { get; private set; }
         private bool wasAvailable;
         public bool IsLegacy { get { return false; } }
+        public KinectSensor Sensor { get; private set; }
 
         private WrappedBody activePlayer = new WrappedBody(null);
         private WrappedBody[] players = new WrappedBody[0];
@@ -133,6 +134,7 @@ namespace KinectDXBootstrap
             this.CoordinateMapper = new WrappedCoordinateMapper(sensor.CoordinateMapper);
             sensor.IsAvailableChanged += (s, e) => IsAvailable = (s as KinectSensor).IsAvailable;
             UserColors = DEFAULT_USER_COLORS;
+            Sensor = sensor;
         }
 
         public FrameSourceTypes Render(GraphicsDevice graphics)
