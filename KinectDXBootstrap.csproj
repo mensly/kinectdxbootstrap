@@ -7,7 +7,7 @@
     <ProjectGuid>{0F1591A2-E9A6-4689-A3C9-42B908761F12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Adapptor.KinectDXBootstrap</RootNamespace>
+    <RootNamespace>KinectDXBootstrap</RootNamespace>
     <AssemblyName>KinectDXBootstrap</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;INCLUDE_LEGACY</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
