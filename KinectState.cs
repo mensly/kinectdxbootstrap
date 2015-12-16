@@ -154,7 +154,7 @@ namespace KinectDXBootstrap
                 ColorImage.SetData(colorData);
             }
             if ((modified & FrameSourceTypes.Depth) != 0 || 
-                (0 != (DepthImageMode & KinectDXBootstrap.DepthImageMode.IncludeJoints) && (modified & FrameSourceTypes.Body) != 0))
+                (0 != (DepthImageMode & KinectDXBootstrap.DepthImageMode.IncludeJoints) && (modified & FrameSourceTypes.Body) != 0 && DepthImageSize != default(Point)))
             {
                 if (depthImage == null)
                 {
