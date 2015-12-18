@@ -47,6 +47,7 @@ namespace KinectDXBootstrap
         public Point ColorImageSize { get { return kinectState.ColorImageSize; } }
         public Point DepthImageSize { get { return kinectState.DepthImageSize; } }
         public Texture2D Pixel { get; private set; }
+        private readonly bool disableAudio;
         
         protected bool RenderDirect { get; private set; }
         private RenderTarget2D renderTarget;
@@ -55,15 +56,9 @@ namespace KinectDXBootstrap
 #if DEBUG
         private float fps = 60;
 #endif
-        
-        public Activation(FrameSourceTypes kinectSources = DEFAULT_KINECT_SOURCES,
-            int renderWidth = 1920, int renderHeight = 1080, bool forceRenderBuffer = false)
-            : this(kinectSources, FaceFrameFeatures.None, renderWidth, renderHeight, forceRenderBuffer)
-        {
-        }
 
         public Activation(FrameSourceTypes kinectSources = DEFAULT_KINECT_SOURCES, FaceFrameFeatures faceFeatures = FaceFrameFeatures.None,
-            int renderWidth = 1920, int renderHeight = 1080, bool forceRenderBuffer = false)
+            int renderWidth = 1920, int renderHeight = 1080, bool forceRenderBuffer = false, bool disableAudio = false)
         {
             this.kinectSources = kinectSources;
             this.faceFeatures = faceFeatures;
@@ -101,6 +96,7 @@ namespace KinectDXBootstrap
             ScreenSize = new Rectangle(0, 0, renderWidth, renderHeight);
             Content.RootDirectory = "Content";
             BackgroundColor = Color.CornflowerBlue;
+            this.disableAudio = disableAudio;
             Title = "Kinect Bootstrap Activation";
         }
 
@@ -166,7 +162,10 @@ namespace KinectDXBootstrap
             base.Initialize();
             keyboard = new KeyboardManager(this);
             InitializeKinect();
-            new AudioManager(this);
+            if (!disableAudio)
+            {
+                new AudioManager(this);
+            }
         }
 
         protected override void Dispose(bool disposeManagedResources)
